@@ -1,6 +1,6 @@
 # Homework 2
 
-Sample application to setup a Spring Boot project following this [guide](https://spring.io/quickstart). This app serves a basic endpoint and supports a basic parameter.
+Sample application to setup a Spring Boot project following this [guide](https://spring.io/quickstart). This RESTful app serves a basic endpoint and supports a basic parameter.
 
 ## Prerequisites
 
@@ -18,4 +18,4 @@ Sample application to setup a Spring Boot project following this [guide](https:/
 
 `./mvnw spring-boot:run`
 
-3. Go to `http://localhost:8080/hello`. You should be greeted by a friendly **Hello World!**. If the request is modified with a param to `http://localhost:8080/hello?name=Adam`, the text will change to **Hello Adam!**.
+3. Go to `http://localhost:8080/hello`. You should be greeted by a friendly **Hello World!** If the request is modified with a param to `http://localhost:8080/hello?name=Adam`, the text will change to **Hello Adam!**
