@@ -6,7 +6,15 @@ Sample application to setup a Spring Boot project following this [guide](https:/
 
 1. JDK 11
 
-2. IDE-based Spring Initalizr
+Fresh Java installallation: `sudo apt install openjdk-11-jdk`
+
+**Note**: Be sure to set the JAVA_HOME environment variable and add that to the path. If you have a prior installation, you can set the active Java using `update-java-alternatives` and manually update the JAVA_HOME variable. See [this](https://askubuntu.com/questions/121654/how-to-set-default-java-version).
+
+2. IDE-based Spring Initalizr.
+
+The IDE used in this case is VSCode. The [Spring Initializr](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-spring-initializr) extension does the heavy lifting here. To generate a new project, open the Command Palette (`Ctrl+Shift+P`) and type Spring Initializr. See this [guide](https://code.visualstudio.com/docs/java/java-spring-boot).
+
+**NOTE**: The extension requires the [Java Extension Pack](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) extension as well. To see if VSCode recognizes your Java installation, bring up the Command Palette (`Ctrl+Shift+P`) and use the command **Java: Configure Java Runtime**. You can check the **Installed JDKs** here.
 
 ## Usage
 
