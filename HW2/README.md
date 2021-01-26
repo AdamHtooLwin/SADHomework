@@ -12,6 +12,8 @@ Fresh Java installallation: `sudo apt install openjdk-11-jdk`
 
 2. IDE-based Spring Initalizr.
 
+**Spring Version: 2.4.2**
+
 The IDE used in this case is VSCode. The [Spring Initializr](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-spring-initializr) extension does the heavy lifting here. To generate a new project, open the Command Palette (`Ctrl+Shift+P`) and type Spring Initializr. See this [guide](https://code.visualstudio.com/docs/java/java-spring-boot).
 
 **NOTE**: The extension requires the [Java Extension Pack](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) extension as well. To see if VSCode recognizes your Java installation, bring up the Command Palette (`Ctrl+Shift+P`) and use the command **Java: Configure Java Runtime**. You can check the **Installed JDKs** here.
