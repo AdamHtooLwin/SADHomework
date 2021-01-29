@@ -1,5 +1,6 @@
 package com.example.hr.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.hr.daos.EmployeeDao;
@@ -7,11 +8,10 @@ import com.example.hr.models.Employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -28,22 +28,26 @@ public class EmployeeController {
         // if exists, return user, if not, return nothing
         List<Employee> elist = eDao.findAll();
 
-        // add user information to mv
+        // HashMap<Employee, Integer> result= new HashMap<Employee, Integer>();
+        List<EmployeeData> result = new ArrayList<EmployeeData>();
         for (Employee e : elist){
-            int netValue = getNetValue(e.getSalary(), e.getValue());
-            // nets.add(netValue);
+            int netValue = e.getNetValue();
+            
+            EmployeeData eData = new EmployeeData();
+            eData.setEmployee(e);
+            eData.setNetValue(netValue);
+
+            result.add(eData);
         }
 
-        mv.addObject("elist", elist);
-        System.out.println(elist);
+        mv.addObject("result", result);
 
         return mv;
 
     }
 
     @RequestMapping(path = "/employees/edit", method = RequestMethod.POST)
-    public String saveOrUpdateUser(@RequestParam int id){
-        Employee employee = eDao.getOne(id);
+    public String saveOrUpdateUser(@RequestBody Employee employee){
         eDao.save(employee);
         return "home.jsp";
     }
@@ -53,6 +57,28 @@ public class EmployeeController {
         Employee employee = eDao.getOne(id);
         eDao.delete(employee);
         return "home.jsp";
+    }
+
+    // public class in terms of security any issues?
+    public class EmployeeData {
+        Employee employee;
+        int netValue;
+
+        public Employee getEmployee() {
+            return employee;
+        }
+
+        public void setEmployee(Employee employee) {
+            this.employee = employee;
+        }
+
+        public int getNetValue() {
+            return netValue;
+        }
+
+        public void setNetValue(int netValue) {
+            this.netValue = netValue;
+        }
     }
 
     private int getNetValue(int salary, int value){

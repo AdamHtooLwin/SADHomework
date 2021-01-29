@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -8,8 +8,14 @@ pageEncoding="ISO-8859-1"%>
 <meta charset="ISO-8859-1">
 <title>Human Resources</title>
 </head>
-<body>
 
+<style>
+    table, th, td {
+  border: 1px solid black;
+}
+</style>
+
+<body>
     <h1>Employees</h1>
     <hr>
 
@@ -18,10 +24,10 @@ pageEncoding="ISO-8859-1"%>
             <th>Employee Name</th>
             <th>Net value</th>
         </tr>
-        <c:forEach items="${elist}" var="employee">
+        <c:forEach items="${result}" var="employeedata">
             <tr>
-                <td><c:out value="${employee.name}"/></td>
-                <td><c:out value="${employee.value}"/></td>  
+                <td><c:out value="${employeedata.employee.name}"/></td>
+                <td><c:out value="${employeedata.netValue}"/></td>  
             </tr>
         </c:forEach>
     </table>

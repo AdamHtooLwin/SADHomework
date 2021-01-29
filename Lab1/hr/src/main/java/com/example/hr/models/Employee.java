@@ -16,6 +16,10 @@ public class Employee {
     private int value;
     private int positionLevel;        
 
+    public int getNetValue(){
+        return value - salary;
+    }
+
     public int getId() {
         return id;
     }
