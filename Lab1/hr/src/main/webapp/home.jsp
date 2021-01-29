@@ -22,6 +22,8 @@ pageEncoding="ISO-8859-1"%>
     <table>
         <tr>
             <th>Employee Name</th>
+            <th>Address</th>
+            <th>Position Level</th>
             <th>Net value</th>
         </tr>
         
@@ -30,38 +32,43 @@ pageEncoding="ISO-8859-1"%>
                 <c:when test="${employeedata.netValue le 0}">
                     <tr style="background-color: red;">
                         <td><c:out value="${employeedata.employee.name}"/></td>
+                        <td><c:out value="${employeedata.employee.address}"/></td>
+                        <td><c:out value="${employeedata.employee.positionLevel}"/></td>
                         <td><c:out value="${employeedata.netValue}"/></td>  
+                        <td>
+                            <form action="edit.jsp?id=${employeedata.employee.id}" method="GET">
+                                <input type="submit" value="Edit">
+                            </form>
+                        </td>
+                        <td>
+                            <form action="employees/delete/${employeedata.employee.id}" method="GET">
+                                <input type="submit" value="Delete">
+                            </form>
+                        </td>
                     </tr>
                 </c:when>
                 <c:otherwise>
                     <tr>
                         <td><c:out value="${employeedata.employee.name}"/></td>
-                        <td><c:out value="${employeedata.netValue}"/></td>  
+                        <td><c:out value="${employeedata.employee.address}"/></td>
+                        <td><c:out value="${employeedata.employee.positionLevel}"/></td>
+                        <td><c:out value="${employeedata.netValue}"/></td> 
+                        <td>
+                            <form action="edit.jsp?id=${employeedata.employee.id}" method="GET">
+                                <input type="submit" value="Edit">
+                            </form>
+                        </td>
+                        <td>
+                            <form action="employees/delete/${employeedata.employee.id}" method="GET">
+                                <input type="submit" value="Delete">
+                            </form>
+                        </td>
                     </tr>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
     </table>
-
     <hr>
-    <h2>Update a user:</h2>
-    <form action="employees/edit/" method="POST">
-        Employee ID: <input type="text" name="id"><br>
-        Name: <input type="text" name="name"><br>
-        Address: <input type="text" name="address"><br>
-        Salary: <input type="text" name="salary"><br>
-        Value: <input type="text" name="value"><br>
-        Position level: <input type="text" name="position_level"><br>
-        <input type="submit">
-    </form>
-
-    <br>
-
-    <h2>Delete user by specifying ID</h2>
-    <form action="employees/delete">
-        UID: <input type="text" name="id"><br>
-        <input type="submit">
-    </form>
 
 </body>
 </html>

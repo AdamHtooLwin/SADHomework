@@ -8,10 +8,10 @@ import com.example.hr.models.Employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -46,20 +46,27 @@ public class EmployeeController {
 
     }
 
-    @RequestMapping(path = "/employees/edit", method = RequestMethod.POST)
-    public String saveOrUpdateUser(@RequestBody Employee employee){
-        eDao.save(employee);
-        return "home.jsp";
+    @RequestMapping(path = "/employees/edit/{id}", method = RequestMethod.GET)
+    public String redirectToEditPage(){
+        return "edit.jsp";
     }
 
-    @RequestMapping(path = "/employees/delete", method = RequestMethod.GET)
-    public String deleteUser(@RequestParam int id){
+    @RequestMapping(path = "/employees/edit", method = RequestMethod.POST)
+    public String saveOrUpdateEmployee(Employee employee){
+        eDao.save(employee);
+        return "redirect:/";
+    }
+
+    @RequestMapping(path = "/employees/delete/{id}", method = RequestMethod.GET)
+    public String deleteUser(@PathVariable("id") int id){
         Employee employee = eDao.getOne(id);
         eDao.delete(employee);
-        return "home.jsp";
+        return "redirect:/";
     }
 
     // public class in terms of security any issues?
+    // class to encapsulate employee object and net value
+    // alternatives - add attribute under Employee
     public class EmployeeData {
         Employee employee;
         int netValue;

@@ -2,16 +2,27 @@ package com.example.hr.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Employee {
+    private enum Gender {
+        Male,
+        Female
+    }
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private int id;
     @Column(nullable = false) private String name;
     private String address;
+
+    // Not sure if the enum is correct. DB data type is varchar(255).
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
     private int salary;
     private int value;
     private int positionLevel;        

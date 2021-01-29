@@ -23,6 +23,13 @@
 			<version>1.2</version>
 		</dependency>
 		
+		<!-- embedded Tomcat treats the JSP rendering as optional -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-jasper</artifactId>
