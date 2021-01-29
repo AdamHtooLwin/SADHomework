@@ -24,11 +24,22 @@ pageEncoding="ISO-8859-1"%>
             <th>Employee Name</th>
             <th>Net value</th>
         </tr>
+        
         <c:forEach items="${result}" var="employeedata">
-            <tr>
-                <td><c:out value="${employeedata.employee.name}"/></td>
-                <td><c:out value="${employeedata.netValue}"/></td>  
-            </tr>
+            <c:choose>
+                <c:when test="${employeedata.netValue le 0}">
+                    <tr style="background-color: red;">
+                        <td><c:out value="${employeedata.employee.name}"/></td>
+                        <td><c:out value="${employeedata.netValue}"/></td>  
+                    </tr>
+                </c:when>
+                <c:otherwise>
+                    <tr>
+                        <td><c:out value="${employeedata.employee.name}"/></td>
+                        <td><c:out value="${employeedata.netValue}"/></td>  
+                    </tr>
+                </c:otherwise>
+            </c:choose>
         </c:forEach>
     </table>
 
