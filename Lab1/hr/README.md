@@ -2,7 +2,23 @@
 
 This application tracks employees and their performance via their net value. The net value is calculated by subtracting their salary from their value. It also allows for the editing and deletion of employees from the system.
 
-This system uses JSTL and the associated dependencies are added through the Maven repo in pom.xml.
+This system uses JSTL and the associated dependencies are installed through the Maven repo in pom.xml as shown below:
+
+```xml
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+</dependency>
+
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>jstl</artifactId>
+    <scope>provided</scope>
+</dependency>
+```
+
+**Note**: Embedded Tomcat treats the JSP rendering as optional so we need to explicitly redefine JSP hence the 2nd dependency.
 
 ## Usage
 
