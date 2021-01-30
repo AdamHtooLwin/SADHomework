@@ -22,6 +22,7 @@ pageEncoding="ISO-8859-1"%>
     <table>
         <tr>
             <th>Employee Name</th>
+            <th>Gender</th>
             <th>Address</th>
             <th>Position Level</th>
             <th>Net value</th>
@@ -32,6 +33,7 @@ pageEncoding="ISO-8859-1"%>
                 <c:when test="${employeedata.netValue le 0}">
                     <tr style="background-color: red;">
                         <td><c:out value="${employeedata.employee.name}"/></td>
+                        <td><c:out value="${employeedata.employee.gender}"/></td>
                         <td><c:out value="${employeedata.employee.address}"/></td>
                         <td><c:out value="${employeedata.employee.positionLevel}"/></td>
                         <td><c:out value="${employeedata.netValue}"/></td>  
@@ -50,6 +52,7 @@ pageEncoding="ISO-8859-1"%>
                 <c:otherwise>
                     <tr>
                         <td><c:out value="${employeedata.employee.name}"/></td>
+                        <td><c:out value="${employeedata.employee.gender}"/></td>
                         <td><c:out value="${employeedata.employee.address}"/></td>
                         <td><c:out value="${employeedata.employee.positionLevel}"/></td>
                         <td><c:out value="${employeedata.netValue}"/></td> 
