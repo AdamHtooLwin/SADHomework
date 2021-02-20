@@ -18,20 +18,31 @@ These users are already in the DB on startup.
 ## Results
 
 ### Login Page
+
+***
 ![login](docs/lab2-login.png)
 
 ### Form Validation
+
+***
 ![login](docs/lab2-val.png)
 
+***
 ![login](docs/lab2-val2.png)
 
 ### Admin sign-in
+
+***
 ![login](docs/lab2-admin.png)
 
 ### User sign-in
+
+***
 ![login](docs/lab2-user.png)
 
 ### Email (not sure if this is how it's supposed to work)
+
+***
 ![login](docs/lab2-email.png)
 
 ***
