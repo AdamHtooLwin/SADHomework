@@ -1,0 +1,1 @@
+insert into user values (101, 'Chaky', 'Hong Kong', 'a@ait.asia');
