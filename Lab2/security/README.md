@@ -4,7 +4,7 @@ This lab illustrates a basic flow of the authentication and authorization mechan
 
 1. Basic sign-in, sign-out, register functionalities.
 
-2. Email notification through [mailtrap](https://mailtrap.io/).
+2. Email notification through [mailtrap](https://mailtrap.io/). **Note**: Email has been disabled for now due to hidden credentials. Can be renabled on request.
 
 The three main files related to Security are the `SecurityConfig.java`, `UserServiceImpl.java` and `UserService.java` but most of the authentication and access control is done in `SecurityConfig.java`. The email logic is done in `EmailSerciceImpl.java`.
 
