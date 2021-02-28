@@ -1,52 +1,35 @@
 package com.lab.rr.controllers;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.lab.rr.script.RevenueRecognitionScript;
-import com.lab.rr.tablegateway.ContractTableDataGateway;
-import com.lab.rr.tablegateway.ProductTableDataGateway;
+import com.lab.rr.dao.ContractJpaRepository;
+import com.lab.rr.dao.ProductJpaRepository;
+import com.lab.rr.models.Contract;
+import com.lab.rr.models.Product;
+import com.lab.rr.services.RevenueRecognitionFacade;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
+
     @Autowired
-	RevenueRecognitionScript script;
+	RevenueRecognitionFacade script;
 
 	@Autowired
-	ProductTableDataGateway productGateway;
+	ProductJpaRepository productRepo;
 
 	@Autowired
-	ContractTableDataGateway contractGateway;
+	ContractJpaRepository contractRepo;
 
-	@RequestMapping(path = "/")
+	@GetMapping(path = "/")
 	public ModelAndView home() {
-		List<Object> products = new ArrayList<>();
-		ResultSet rs = productGateway.findAll();
-
-//		very bad coding practice but if you want to stick with table data gateway...
-//		Ideally, you want to create a mapper that maps table columns to object fields
-		try {
-			while (rs.next()) {
-				Object[] arr = new Object[3];
-
-				arr[0] = rs.getInt("id");
-				arr[1] = rs.getString("name");
-				arr[2] = rs.getString("type");
-				products.add(arr);
-				
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		List<Product> products = productRepo.findAll();
 
 		Map<String, Object> allObjectsMap = new HashMap<String, Object>();
 		allObjectsMap.put("products", products);
@@ -58,39 +41,20 @@ public class HomeController {
 		return mv;
 	}
 
-	@RequestMapping(path = "/check")
+	@GetMapping(path = "/check")
 	public ModelAndView calculateRevenueRecognition() {
-		List<Object> contracts = new ArrayList<>();
-		ResultSet rs = contractGateway.findAll();
-
-		// very bad coding practice but if you want to stick with table data gateway...
-		// Ideally, you want to create a mapper that maps table columns to object fields
-		try {
-			while (rs.next()) {
-				Object[] arr = new Object[4];
-
-				arr[0] = rs.getInt("id");
-				arr[1] = rs.getInt("product_id");
-				arr[2] = rs.getString("revenue");
-				arr[3] = rs.getString("datesigned");
-				contracts.add(arr);
-				
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		List<Contract> contracts = contractRepo.findAll();
+		
+		System.out.println(contracts.toString());
+		
 		Map<String, Object> allObjectsMap = new HashMap<String, Object>();
 		allObjectsMap.put("contracts", contracts);
-
+		
 		ModelAndView mv = new ModelAndView();
 		mv.addAllObjects(allObjectsMap);
 
 		mv.setViewName("checkrr.jsp");
 		return mv;
-	}
-	
-	
+	}	
 
 }

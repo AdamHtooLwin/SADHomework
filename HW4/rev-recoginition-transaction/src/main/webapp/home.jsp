@@ -15,7 +15,7 @@
 	
 	Choose Product: <select name="pid">
 	<c:forEach items="${products}" var="product" >
-		<option value="${product.id}">${product.name}</option>
+		<option value="${product[0]}">${product[1]}</option>
 	</c:forEach>
 	</select> <br/>
 	

@@ -15,8 +15,7 @@
 	
 	Contract ID: <select name="cid">
 	<c:forEach items="${contracts}" var="contract" >
-		<option value="${contract.id}">Product ID: ${contract.product.id}; 
-		Revenue: ${contract.revenue_}, Date Signed: ${contract.dateSigned}</option>
+		<option value="${contract[0]}">Product ID: ${contract[1]}; Revenue: ${contract[2]}, Date Signed: ${contract[3]}</option>
 	</c:forEach>
 	</select> <br/>
 	Date as of: <input type="date" name="date"><br> 
