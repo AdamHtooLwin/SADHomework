@@ -1,0 +1,51 @@
+# Lab 3
+
+Onetoone, onetomany, manytoone, manytomany
+
+cascade
+
+lazy and eager load -> load parents then do u want to load child? -> just placeholder: lazy, real object: eager bad if big.
+
+transient -> not included in db
+
+embeddedid
+primary id will have many fields -> primarykey of multiple of fields -> composite key?
+
+mapsId
+onetoone User -> Employee -> use the same ID for user pk and employee
+
+Inheritance947 2286 1036
+
+
+# Actual Coding
+TestService -> for tests to use
+
+hbiernate-ehcahce - interface for ehcache to integrate into hibernate
+ehcache ->
+firstlevel caching - have object within a session
+what if i want identity map across sesssions? -> 2nd level caching.
+
+enable_selective -> only models i annotate will have 2nd level
+all - all objects
+
+use_query_cache - off -> will not  run twice.
+
+ehcache.xml -> resurces folder
+
+noargsconstructor for spring security
+
+Address.java
+EmbeddedId -> composite key
+
+MapsID -> put the userID into id field (pk) instead of auto gen
+JoionColumn is the FK of the user in the eployee table
+
+
+Test Service
+entitymnager -> allows me to access Entity
+@Transactional -> complete within itself - recommended to take out
+
+
+Bean -> object that we can use in the program
+
+
