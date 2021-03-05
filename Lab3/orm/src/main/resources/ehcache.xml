@@ -13,7 +13,7 @@
 	</defaultCache>
 	
 	<cache name="employee" maxEntriesLocalHeap="10000" eternal="false"
-		timeToIdleSeconds="5" timeToLiveSeconds="10">
+		timeToIdleSeconds="5" timeToLiveSeconds="20">
 		<persistence strategy="localTempSwap" />
 	</cache>
 		

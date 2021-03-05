@@ -81,7 +81,7 @@ public class Employee {
 	// When you load employee, it will load user (for one-to-one)
 	// by default
 	@OneToOne(mappedBy = "emp", cascade = CascadeType.ALL, orphanRemoval = true)
-	private User user;
+	private User user; // mapped by attribute in user called "emp"
 
 	/*
 	 * When an Employee entity object is removed the remove operation is cascaded to

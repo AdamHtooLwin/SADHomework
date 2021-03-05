@@ -106,7 +106,10 @@ public class TestService {
 	}
 
 	@Transactional
-	public void testCreateLeave(int id, LeaveType type) {
+	public void testCreateLeave() {
+		int id = 1;
+		LeaveType type = LeaveType.SICK;
+
 		LocalDate start = LocalDate.of(2018, 2, 13);
 		LocalDate end = LocalDate.of(2018, 2, 15);
 		Employee emp = em.find(Employee.class, id);
