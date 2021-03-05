@@ -61,8 +61,10 @@ public class TestService {
 		employee.setAge(35);
 
 		// add user
-		User u = em.find(User.class, 3);
-		employee.setUser(u);
+		User u = new User();
+		u.setUsername("secondpeter");
+
+		u.setEmp(employee);
 
 		// add address
 		Address add = new Address();
@@ -86,7 +88,7 @@ public class TestService {
 		employee.setBenefits(benefits);
 
 		em.persist(employee); // this means that em will track all changes once trans finish
-
+		// em.persist(benefit);
 	}
 
 	@Transactional
