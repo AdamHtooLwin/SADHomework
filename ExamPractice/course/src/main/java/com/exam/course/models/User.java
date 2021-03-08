@@ -14,6 +14,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -60,4 +61,7 @@ public class User {
     //but if child is saved, maybe parent is not saved
     @JsonBackReference //take this out - infinite recursion error - EXPLORE!
     private Set<Role> roles;
+
+    @ManyToMany
+    private Set<Course> courses;
 }
