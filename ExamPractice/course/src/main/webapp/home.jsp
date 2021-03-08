@@ -26,7 +26,8 @@ pageEncoding="ISO-8859-1"%>
                 <th>Discipline</th>
                 <th>Course Type</th>
                 <th>Revenue Generated</th>
-                <!-- <th>Role</th> -->
+                <th>Enrolled</th>
+                <th>Enrollment</th>
             </tr>
         </thead>
         
@@ -39,9 +40,22 @@ pageEncoding="ISO-8859-1"%>
                     <td><c:out value="${course.discipline}"/></td>
                     <td><c:out value="${course.type}"/></td>
                     <td><c:out value="${course.revenueGenerated}"/></td>
+                    <td>
+                        <c:forEach items="${user.courses}" var="user_course">
+                            <c:if test="${user_course.id eq course.id}">
+                                <p>Enrolled</p>
+                            </c:if>
+                        </c:forEach>
+                    </td>
+                    <td>
+                        <form action="course/${course.id}/enroll" method="GET">
+                            <input type="submit" value="Enroll">
+                        </form>
+                    </td>
+
                     <!-- <td>
-                        <c:forEach items="${user.roles}" var="role">
-                            <p><c:out value="${role.name}"/></p>
+                        <c:forEach items="${user.courses}" var="user_course">
+                            <p><c:out value="${user_course.name}"/></p>
                         </c:forEach>
                     </td> -->
                 </tr>
@@ -51,11 +65,7 @@ pageEncoding="ISO-8859-1"%>
 
     <br>
 
-    <h1>Add Course</h1>
-        <hr>
-        <form action="courses" method="POST">
-          Title: <input type="text" name="title"><hr>
-          <input type="submit">
-        </form>
+    <a href="addCourse"><h1>Add Course</h1></a>
+    <hr>
     </div>
 </html>

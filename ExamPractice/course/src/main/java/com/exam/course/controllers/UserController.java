@@ -6,6 +6,7 @@ import java.util.List;
 import com.exam.course.dao.CourseJPADao;
 import com.exam.course.models.Course;
 import com.exam.course.models.User;
+import com.exam.course.services.EmailService;
 import com.exam.course.services.UserService;
 import com.exam.course.validation.UserValidator;
 
@@ -21,9 +22,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private UserValidator userValidator;
 
     @GetMapping(path = "/")
     public ModelAndView userDashboard(Principal principal) {

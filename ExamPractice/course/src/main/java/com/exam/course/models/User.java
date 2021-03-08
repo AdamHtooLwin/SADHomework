@@ -2,6 +2,7 @@ package com.exam.course.models;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,7 +15,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -62,6 +62,7 @@ public class User {
     @JsonBackReference //take this out - infinite recursion error - EXPLORE!
     private Set<Role> roles;
 
-    @ManyToMany
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @JsonBackReference
     private Set<Course> courses;
 }
