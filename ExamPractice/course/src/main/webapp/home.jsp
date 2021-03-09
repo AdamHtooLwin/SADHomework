@@ -28,6 +28,7 @@ pageEncoding="ISO-8859-1"%>
                 <th>Revenue Generated</th>
                 <th>Enrolled</th>
                 <th>Enrollment</th>
+                <th>Admin Actions</th>
             </tr>
         </thead>
         
@@ -48,9 +49,15 @@ pageEncoding="ISO-8859-1"%>
                         </c:forEach>
                     </td>
                     <td>
-                        <form action="course/${course.id}/enroll" method="GET">
+                        <form action="/course/${course.id}/enroll" method="GET">
                             <input type="submit" value="Enroll">
                         </form>
+                    </td>
+                    <td>
+                        <c:if test="${admin_flag}">
+                            <a href="/course/${course.id}/sendEmail">Send Email</a>
+                            <hr>
+                        </c:if>
                     </td>
 
                     <!-- <td>
@@ -65,7 +72,9 @@ pageEncoding="ISO-8859-1"%>
 
     <br>
 
-    <a href="addCourse"><h1>Add Course</h1></a>
+    <a href="/addCourse"><h1>Add Course</h1></a>
     <hr>
+
+	<a href="/logout">Logout</a>
     </div>
 </html>
