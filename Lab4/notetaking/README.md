@@ -28,7 +28,7 @@ The app is a note taking application that supports formatted text to be saved. T
 
 ![Record](docs/lab4-app.png)
 
-The app running on minkube:
+The app running on minkube (note the IP):
 
 ![Record](docs/lab4-kubernetes-app.png)
 
