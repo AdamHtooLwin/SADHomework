@@ -63,6 +63,7 @@ public class CarController {
             CompletableFuture<List<Car>> cars1=carService.getAllCars();
             CompletableFuture<List<Car>> cars2=carService.getAllCars();
             CompletableFuture<List<Car>> cars3=carService.getAllCars();
+            
             CompletableFuture.allOf(cars1, cars2, cars3).join();
             
             return ResponseEntity.status(HttpStatus.OK).build();
