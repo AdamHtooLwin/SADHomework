@@ -8,6 +8,12 @@ By default, Spring stores session information in the memory but we can config it
 
 ## Testing
 
+**Credentials**:
+
+Username: `admin`
+
+Password: `password`
+
 Spring can store custom attributes in the session as well. In this case our attribute is called `MY_MESSAGES` and is an array of strings. We can add strings to the attribute in the form below.
 
 ![data](docs/hw7-add-message.png)
