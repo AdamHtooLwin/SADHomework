@@ -40,7 +40,13 @@ Redis can also be used as a session store in lieu of a relational database so as
 </dependency>
 ```
 
-2. Install Redis somewhere. In this case, it is installed as a docker container on the puffer server at port 41231. We can connect via:
+2. Install Redis somewhere. In this case, it is installed as a docker container on the puffer server at port 41231.
+
+We can pull the default Redis image from dockerhub using `docker pull redis`.
+
+Then we can run the container (might need sudo privileges if installed into root): `docker run -d -p 41231:6379 --name htoo-redis redis`
+
+We can connect via:
 
 `redis-cli -h localhost -p 41231`
 
